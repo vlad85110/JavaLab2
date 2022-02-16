@@ -47,7 +47,11 @@ public class Parser {
         }
 
         if (strArray[0].equals("PUSH")) {
-            //TODO check
+            if (strArray.length == 1) {
+                throw new InputMismatchException("Wrong input in line " + lineCnt + " : No arguments for function" +
+                        " \n" + line + "\n");
+            }
+
             var desc = new OperatorDescriptor(strArray[0], definitions.get(strArray[1]));
             descriptor.operations.add(desc);
             return;
