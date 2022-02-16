@@ -1,4 +1,4 @@
-package com.operators;
+package com;
 
 import com.executor.Executor;
 import com.parser.Parser;

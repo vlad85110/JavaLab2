@@ -7,9 +7,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 
 public class Parser {
+    private static int lineCnt = 0;
     public static WorkflowDescriptor parse(String fileName) throws IOException {
         File file = new File(fileName);
         FileReader fr = new FileReader(file);
@@ -17,26 +19,36 @@ public class Parser {
 
         String line;
         var descriptor = new WorkflowDescriptor();
+        var definitions = new HashMap<String, Double>();
         line = reader.readLine();
-        while (line != null) {
-            parseStr(line, descriptor);
-            line = reader.readLine();
+        try {
+            while (line != null) {
+                parseStr(line, descriptor, definitions);
+                line = reader.readLine();
+            }
         }
-        fr.close();
-        reader.close();
+        finally {
+            fr.close();
+            reader.close();
+        }
         return descriptor;
     }
 
-    private static void parseStr(String line, WorkflowDescriptor descriptor) {
+    private static void parseStr(String line, WorkflowDescriptor descriptor, HashMap<String, Double> definitions) {
+        lineCnt++;
+
+        if (line.startsWith("#") || line.isBlank()) return;
+
         var strArray = line.split(" ");
 
         if (strArray[0].equals("DEFINE")) {
-            descriptor.definitions.put(strArray[1], Integer.parseInt(strArray[2]));
+            definitions.put(strArray[1], Double.parseDouble(strArray[2]));
             return;
         }
 
-        if (strArray[0].equals("PUSH") || strArray[0].equals("POP")) {
-            var desc = new OperatorDescriptor(strArray[0], Double.parseDouble(strArray[1]));
+        if (strArray[0].equals("PUSH")) {
+            //TODO check
+            var desc = new OperatorDescriptor(strArray[0], definitions.get(strArray[1]));
             descriptor.operations.add(desc);
             return;
         }
@@ -47,6 +59,6 @@ public class Parser {
             return;
         }
 
-        throw new InputMismatchException("Wrong input");
+        throw new InputMismatchException("Wrong input in line " + lineCnt + " \n" + line + "\n");
     }
 }

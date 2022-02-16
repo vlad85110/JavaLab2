@@ -2,15 +2,13 @@ package com.operators;
 
 import java.util.Stack;
 
-public class Push implements Operator {
-    private final OperatorDescriptor descriptor;
-
+public class Push extends AbstractOperator {
     public Push(OperatorDescriptor descriptor) {
-        this.descriptor = descriptor;
+        super(descriptor);
     }
 
     @Override
-    public void execute(Stack<Integer> stack) {
-
+    public void execute(Stack<Double> stack) {
+        stack.push(argument);
     }
 }

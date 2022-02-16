@@ -5,8 +5,8 @@ public class OperatorDescriptor {
     public String name;
     public Double argument;
 
-    public OperatorDescriptor(String name, Double arg1) {
+    public OperatorDescriptor(String name, Double argument) {
         this.name = name;
-        this.argument = arg1;
+        this.argument = argument;
     }
 }
