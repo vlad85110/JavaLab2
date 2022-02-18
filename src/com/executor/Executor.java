@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class Executor {
     private final WorkflowDescriptor descriptor;
-    private Stack<Integer> stack;
+    private final Stack<Double> stack;
 
     public Executor(WorkflowDescriptor descriptor) {
         this.descriptor = descriptor;

@@ -2,15 +2,15 @@ package com.operators;
 
 import java.util.Stack;
 
-public class Print implements Operator {
-    private final OperatorDescriptor descriptor;
-
+public class Print extends AbstractOperator {
     public Print(OperatorDescriptor descriptor) {
-        this.descriptor = descriptor;
+        super(descriptor);
     }
 
     @Override
-    public void execute(Stack<Integer> stack) {
-
+    public void execute(Stack<Double> stack) {
+        checkStack(stack);
+        var arg = stack.peek();
+        System.out.println(arg);
     }
 }

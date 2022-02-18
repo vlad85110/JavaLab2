@@ -2,15 +2,14 @@ package com.operators;
 
 import java.util.Stack;
 
-public class Pop implements Operator {
-    private final OperatorDescriptor descriptor;
-
+public class Pop extends AbstractOperator {
     public Pop(OperatorDescriptor descriptor) {
-        this.descriptor = descriptor;
+        super(descriptor);
     }
 
     @Override
-    public void execute(Stack<Integer> stack) {
-
+    public void execute(Stack<Double> stack) {
+        checkStack(stack);
+        stack.pop();
     }
 }
