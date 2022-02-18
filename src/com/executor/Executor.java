@@ -3,6 +3,7 @@ package com.executor;
 import com.factory.Factory;
 import com.operators.Operator;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
 public class Executor {
@@ -15,9 +16,18 @@ public class Executor {
     }
 
     public void execute() {
-        var factory = new Factory();
+        var factory = new Factory(descriptor.operators);
         for (var i : descriptor.operations) {
-            var operator = factory.createObject(i);
+            Operator operator;
+            try {
+                operator = factory.createObject(i);
+            } catch (ClassNotFoundException | InvocationTargetException | InstantiationException
+                    | IllegalAccessException | NoSuchMethodException e) {
+                e.printStackTrace();
+                System.err.println("terminate with code 1");
+                return;
+            }
+
             operator.execute(stack);
         }
     }
