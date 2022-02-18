@@ -1,0 +1,6 @@
+PUSH 4.0
+SQRT 2.0
+PUSH 2.0
++(2.0, 2.0)
+PRINT 4.0
+POP 4.0
