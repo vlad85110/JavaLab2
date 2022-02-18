@@ -1,5 +1,6 @@
 package com.executor;
 
+import com.factory.Factory;
 import com.operators.Operator;
 
 import java.util.Stack;
@@ -14,8 +15,9 @@ public class Executor {
     }
 
     public void execute() {
+        var factory = new Factory();
         for (var i : descriptor.operations) {
-            var operator = Operator.of(i);
+            var operator = factory.createObject(i);
             operator.execute(stack);
         }
     }

@@ -5,4 +5,5 @@ SQRT
 PUSH b
 PRINT
 POP
+#stas
 #comment

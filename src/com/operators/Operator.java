@@ -6,7 +6,7 @@ public interface Operator {
 
     public void execute(Stack<Double> stack);
 
-    public static Operator of(OperatorDescriptor descriptor) {
+    /*public static Operator of(OperatorDescriptor descriptor) {
         if (descriptor.name.equals("POP"))
             return new Pop(descriptor);
 
@@ -32,5 +32,5 @@ public interface Operator {
             return new Print(descriptor);
 
         throw new RuntimeException("Wrong operation name");
-    }
+    }*/
 }

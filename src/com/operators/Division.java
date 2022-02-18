@@ -2,19 +2,13 @@ package com.operators;
 
 import java.util.Stack;
 
-public class Division extends AbstractOperator {
+public class Division extends AbstractBinaryOperator {
     public Division(OperatorDescriptor descriptor) {
         super(descriptor);
     }
 
     @Override
-    public void execute(Stack<Double> stack) {
-        checkStack(stack);
-        var arg2 = stack.pop();
-        checkStack(stack);
-        var arg1 = stack.pop();
-
-        var res = arg1 / arg2;
-        stack.push(res);
+    protected double operation(double arg1, double arg2) {
+        return arg1 / arg2;
     }
 }
