@@ -63,6 +63,11 @@ public class Parser {
             return;
         }
 
+        if (strArray[0].equals("LOGGING")) {
+            descriptor.fileName = strArray[1];
+            return;
+        }
+
         if (descriptor.operators.containsKey(strArray[0])) {
             if (strArray.length - 1 < argumentsCount.get(strArray[0])){
                 throw new InputMismatchException("Wrong input in line " + lineCnt +

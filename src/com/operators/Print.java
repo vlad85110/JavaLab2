@@ -8,9 +8,10 @@ public class Print extends AbstractOperator {
     }
 
     @Override
-    public void execute(Stack<Double> stack) {
+    public String execute(Stack<Double> stack) {
         checkStack(stack);
         var arg = stack.peek();
         System.out.println(arg);
+        return operationName + " " + arg + "\n";
     }
 }

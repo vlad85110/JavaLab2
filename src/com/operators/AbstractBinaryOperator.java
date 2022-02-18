@@ -8,7 +8,7 @@ public abstract class AbstractBinaryOperator extends AbstractOperator{
     }
 
     @Override
-    public void execute(Stack<Double> stack) {
+    public String execute(Stack<Double> stack) {
         checkStack(stack);
         var arg2 = stack.pop();
         checkStack(stack);
@@ -16,6 +16,7 @@ public abstract class AbstractBinaryOperator extends AbstractOperator{
 
         var res = operation(arg1, arg2);
         stack.push(res);
+        return operationName + "(" + arg1 + ", " + arg2 + ")" + "\n";
     }
 
     abstract protected double operation (double arg1, double arg2);

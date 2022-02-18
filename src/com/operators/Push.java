@@ -8,7 +8,7 @@ public class Push extends AbstractOperator {
     }
 
     @Override
-    public void execute(Stack<Double> stack) {
-        stack.push(argument);
+    public String execute(Stack<Double> stack) {
+        return operationName + " " + stack.push(argument).toString() + "\n";
     }
 }

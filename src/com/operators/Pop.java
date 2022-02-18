@@ -8,8 +8,8 @@ public class Pop extends AbstractOperator {
     }
 
     @Override
-    public void execute(Stack<Double> stack) {
+    public String execute(Stack<Double> stack) {
         checkStack(stack);
-        stack.pop();
+        return operationName + " " + stack.pop().toString() + "\n";
     }
 }

@@ -1,4 +1,6 @@
 INCLUDE Factory.properties
+INCLUDE Factory2.properties
+LOGGING logs.txt
 DEFINE a 4
 DEFINE b 2
 

@@ -1,8 +1,10 @@
 package com.executor;
 
 import com.factory.Factory;
+import com.logging.Logger;
 import com.operators.Operator;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Stack;
 
@@ -17,6 +19,15 @@ public class Executor {
 
     public void execute() {
         var factory = new Factory(descriptor.operators);
+        Logger logger = null;
+
+        try {
+            logger = new Logger(descriptor.fileName);
+        } catch (IOException | NullPointerException e) {
+            System.out.print("");
+        }
+
+        String message;
         for (var i : descriptor.operations) {
             Operator operator;
             try {
@@ -28,7 +39,22 @@ public class Executor {
                 return;
             }
 
-            operator.execute(stack);
+            message = operator.execute(stack);
+            if (logger != null) {
+                try {
+                    logger.receiveMessage(message);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (logger != null) {
+            try {
+                logger.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
