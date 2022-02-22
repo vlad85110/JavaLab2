@@ -9,6 +9,6 @@ public class Push extends AbstractOperator {
 
     @Override
     public String execute(Stack<Double> stack) {
-        return operationName + " " + stack.push(argument).toString() + "\n";
+        return operationName + " " + stack.push(arguments[0]).toString() + "\n";
     }
 }

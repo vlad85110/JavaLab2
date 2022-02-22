@@ -79,10 +79,10 @@ public class Parser {
                         " too much arguments" + "\n" + line + "\n");
             }
 
-            var desc = new OperatorDescriptor(strArray[0], null);
+            var desc = new OperatorDescriptor(strArray[0], argumentsCount.get(strArray[0]));
             for (int i = 1; i <= argumentsCount.get(strArray[0]); i++) {
-                desc.argument = definitions.get(strArray[i]);
-                if (desc.argument == null) {
+                desc.arguments[i] = definitions.get(strArray[i]);
+                if (desc.arguments[i] == null) {
                     throw new InputMismatchException("Wrong input in line " + lineCnt +
                             " undefined symbol '" + strArray[i] + "'\n" + line + "\n");
                 }

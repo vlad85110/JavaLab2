@@ -3,13 +3,18 @@ INCLUDE Factory2.properties
 LOGGING logs.txt
 DEFINE a 4
 DEFINE b 2
+DEFINE c 2
 
 
 PUSH a
 SQRT
 PUSH b
+PUSH c
 +
+*
 PRINT
 POP
+
+
 #stas
 #comment

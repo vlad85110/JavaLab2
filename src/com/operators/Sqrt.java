@@ -13,6 +13,6 @@ public class Sqrt extends AbstractOperator {
         var argument = stack.pop();
         var res = Math.sqrt(argument);
         stack.push(res);
-        return operationName + " " + res + "\n";
+        return operationName + " " + argument + "\n";
     }
 }
